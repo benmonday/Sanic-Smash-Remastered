@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://dibffid6t1ud7"]
+
+[ext_resource type="Texture2D" uid="uid://casswmv6fxiji" path="res://assets/images/sprites/hitmarker.png" id="1_2oxkm"]
+[ext_resource type="Script" uid="uid://dt23f3t2p4y4r" path="res://scripts/hitmarker.gd" id="2_lwlw5"]
+[ext_resource type="AudioStream" uid="uid://cffkvgy4uy7kl" path="res://assets/audio/sfx/hitmarker.ogg" id="3_nvjen"]
+
+[node name="Hitmarker" type="Sprite2D"]
+z_index = 10
+texture = ExtResource("1_2oxkm")
+script = ExtResource("2_lwlw5")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_nvjen")
+volume_db = -10.0
+autoplay = true
+bus = &"SFX"

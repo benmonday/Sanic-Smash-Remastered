@@ -1,0 +1,78 @@
+[gd_scene load_steps=8 format=3 uid="uid://c816vnoxq5mca"]
+
+[ext_resource type="Texture2D" uid="uid://cfwbfh4pes1te" path="res://assets/images/sprites/illuminati.png" id="1_w2y8x"]
+[ext_resource type="Script" uid="uid://drtqbcq20h3py" path="res://scripts/event_objects.gd" id="2_li524"]
+[ext_resource type="AudioStream" uid="uid://df033o77pgkk1" path="res://assets/audio/sfx/illuminati.ogg" id="3_rild6"]
+
+[sub_resource type="Animation" id="Animation_hnjt7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
+
+[sub_resource type="Animation" id="Animation_3ndv5"]
+resource_name = "despawn"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1e-05, 1e-05)]
+}
+
+[sub_resource type="Animation" id="Animation_51lbq"]
+resource_name = "spawn"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ni2uv"]
+_data = {
+&"RESET": SubResource("Animation_hnjt7"),
+&"despawn": SubResource("Animation_3ndv5"),
+&"spawn": SubResource("Animation_51lbq")
+}
+
+[node name="Illuminati" type="Sprite2D"]
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("1_w2y8x")
+script = ExtResource("2_li524")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_rild6")
+volume_db = -10.0
+bus = &"Event Objects"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ni2uv")
+}
+autoplay = "spawn"
+speed_scale = 1.5
+
+[connection signal="finished" from="AudioStreamPlayer2D" to="." method="_on_audio_stream_player_2d_finished"]

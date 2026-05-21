@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://clt7dnvtbxb1h"]
+
+[ext_resource type="Texture2D" uid="uid://dw317tamalcff" path="res://assets/images/sprites/blunt.png" id="1_gch62"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_agnw8"]
+atlas = ExtResource("1_gch62")
+region = Rect2(416, 0, 32, 49)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bcugl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_agnw8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Blunt" type="AnimatedSprite2D"]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_bcugl")
+frame_progress = 0.566897

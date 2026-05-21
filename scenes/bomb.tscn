@@ -1,0 +1,135 @@
+[gd_scene load_steps=13 format=3 uid="uid://mc08kjbywaf"]
+
+[ext_resource type="Script" uid="uid://bl6ln1gfmya3n" path="res://scripts/bomb.gd" id="1_vo6fs"]
+[ext_resource type="Texture2D" uid="uid://csh2e2n03u4l" path="res://assets/images/sprites/bomb.png" id="2_81kb0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p5urq"]
+atlas = ExtResource("2_81kb0")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uao7g"]
+atlas = ExtResource("2_81kb0")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_22ut8"]
+atlas = ExtResource("2_81kb0")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8je3d"]
+atlas = ExtResource("2_81kb0")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pl5al"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p5urq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uao7g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_22ut8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8je3d")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g6j3i"]
+size = Vector2(32, 33)
+
+[sub_resource type="Animation" id="Animation_a673c"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_yx28x"]
+resource_name = "spawn"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 24), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_cv8gn"]
+resource_name = "timeout"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 24)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rhop7"]
+_data = {
+&"RESET": SubResource("Animation_a673c"),
+&"spawn": SubResource("Animation_yx28x"),
+&"timeout": SubResource("Animation_cv8gn")
+}
+
+[node name="Bomb" type="Area2D" groups=["Sanics"]]
+z_index = 3
+script = ExtResource("1_vo6fs")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_pl5al")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+z_index = 1
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_g6j3i")
+
+[node name="ExpirationTimer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_rhop7")
+}
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="timeout" from="ExpirationTimer" to="." method="_on_expiration_timer_timeout"]

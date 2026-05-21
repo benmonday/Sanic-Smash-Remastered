@@ -1,0 +1,282 @@
+[gd_scene load_steps=30 format=3 uid="uid://cbqhqv2kxi5x3"]
+
+[ext_resource type="Script" uid="uid://b1n2g0u0i8r46" path="res://scripts/credits.gd" id="1_38gci"]
+[ext_resource type="FontFile" uid="uid://be0637lpicl2n" path="res://assets/images/ui/Pixeltype.ttf" id="2_oh24r"]
+[ext_resource type="Texture2D" uid="uid://cat7s05ougi7b" path="res://assets/images/backgrounds/sky_gradient.png" id="2_sgjlc"]
+[ext_resource type="PackedScene" uid="uid://chrtxrukwq34s" path="res://scenes/sniper.tscn" id="3_t0up0"]
+[ext_resource type="PackedScene" uid="uid://dfxef3a3yeli3" path="res://scenes/save_system.tscn" id="5_r43rs"]
+[ext_resource type="Texture2D" uid="uid://vihhkefugxhk" path="res://assets/images/sprites/X_icon_hover.png" id="6_kmqws"]
+[ext_resource type="Texture2D" uid="uid://bvx6sifreqnno" path="res://assets/images/sprites/X_icon.png" id="7_q2he8"]
+[ext_resource type="Texture2D" uid="uid://ctuigng01e0jy" path="res://assets/images/sprites/itch_icon_hover.png" id="8_g47sg"]
+[ext_resource type="Texture2D" uid="uid://dadq82agauxdl" path="res://assets/images/sprites/itch_icon.png" id="9_rny33"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b8g7f"]
+bg_color = Color(0.635294, 0.14902, 0.2, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wp8rr"]
+bg_color = Color(0.635294, 0.14902, 0.2, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_joper"]
+bg_color = Color(1, 0, 0.266667, 1)
+
+[sub_resource type="Animation" id="Animation_trby1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:theme_override_colors/font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0, 0.266667, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_2hsdm"]
+resource_name = "color_change"
+length = 6.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:theme_override_colors/font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 4, 5, 6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 0, 0.266667, 1), Color(0.968627, 0.462745, 0.133333, 1), Color(0.996078, 0.905882, 0.380392, 1), Color(0.388235, 0.780392, 0.301961, 1), Color(0, 0.6, 0.858824, 1), Color(0.407843, 0.219608, 0.423529, 1), Color(1, 0, 0.266667, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_25rmk"]
+_data = {
+&"RESET": SubResource("Animation_trby1"),
+&"color_change": SubResource("Animation_2hsdm")
+}
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ej33k"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_udpe3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cvp7a"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k3ky0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_m3tgj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mbjce"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_56o8o"]
+texture = ExtResource("6_kmqws")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_es6cc"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cd2fl"]
+texture = ExtResource("6_kmqws")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_petde"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2gt6a"]
+texture = ExtResource("7_q2he8")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2tgyq"]
+texture = ExtResource("8_g47sg")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_stglc"]
+texture = ExtResource("8_g47sg")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2hj62"]
+texture = ExtResource("9_rny33")
+
+[node name="Credits" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_38gci")
+
+[node name="Sky" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 480.0
+offset_bottom = 270.0
+texture = ExtResource("2_sgjlc")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 233.0
+offset_right = 148.0
+offset_bottom = 266.0
+color = Color(0.0941176, 0.0784314, 0.145098, 1)
+
+[node name="Back" type="Button" parent="."]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 234.0
+offset_right = 147.0
+offset_bottom = 265.0
+theme_override_styles/focus = SubResource("StyleBoxFlat_b8g7f")
+theme_override_styles/hover = SubResource("StyleBoxFlat_wp8rr")
+theme_override_styles/normal = SubResource("StyleBoxFlat_joper")
+action_mode = 0
+
+[node name="Label" type="Label" parent="Back"]
+layout_mode = 0
+offset_top = 8.0
+offset_right = 142.0
+offset_bottom = 28.0
+theme_override_colors/font_color = Color(0.0941176, 0.0784314, 0.145098, 1)
+theme_override_fonts/font = ExtResource("2_oh24r")
+theme_override_font_sizes/font_size = 32
+text = "BACK"
+horizontal_alignment = 1
+
+[node name="Sniper" parent="." instance=ExtResource("3_t0up0")]
+
+[node name="Label" type="Label" parent="."]
+z_index = 10
+layout_mode = 0
+offset_left = 5.0
+offset_top = 4.0
+offset_right = 156.0
+offset_bottom = 136.0
+theme_override_colors/font_color = Color(1, 0, 0.266667, 1)
+theme_override_colors/font_shadow_color = Color(0.0941176, 0.0784314, 0.145098, 1)
+theme_override_constants/shadow_outline_size = 8
+theme_override_fonts/font = ExtResource("2_oh24r")
+theme_override_font_sizes/font_size = 16
+text = "Made by Ben Monday
+
+
+
+
+Made with Godot Engine
+
+Thanks to:
+Mikiz for the Pixeltype font
+BDragon1727 for the Smoke FX
+Endesga for the EDG32 Palette
+
+Doritos, Mtn. Dew, MLG, and FaZe
+Clan logos belong to their
+respective companies.
+
+Thanks for playing!"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Label"]
+libraries = {
+&"": SubResource("AnimationLibrary_25rmk")
+}
+autoplay = "color_change"
+speed_scale = 2.0
+
+[node name="Label2" type="Label" parent="."]
+z_index = 10
+layout_mode = 0
+offset_left = 162.0
+offset_top = 4.0
+offset_right = 313.0
+offset_bottom = 136.0
+theme_override_colors/font_color = Color(1, 0, 0.266667, 1)
+theme_override_colors/font_shadow_color = Color(0.0941176, 0.0784314, 0.145098, 1)
+theme_override_constants/shadow_outline_size = 8
+theme_override_fonts/font = ExtResource("2_oh24r")
+theme_override_font_sizes/font_size = 16
+text = "Music Used:
+Sanic Theme from SEGA and 0nxyheart
+The Next Episode from Snoop Dogg, Remix by Hedegaard
+Holdin' On from MONSTA, Skrillex and Nero Remix
+Sad Romance from Ji Pyeong Kwon
+
+Sounds Used:
+Hitmarker and Sniper Shot from COD MW2 (Activison)
+Explosion from DELTARUNE (Toby Fox)
+Smoke Weed Everyday from Snoop Dogg
+Wombo Combo from HomeMadeWaffles, Phil, and Mango
+Oh Baby A Triple from MustruM
+Get Noscoped from austinscooter88
+X-Files Theme by Mark Snow
+Mom Get the Camera from C8 Swap
+Sike! from DeShawn Raw
+Oh My God from TrickShotzzHDx
+Damn Son from Shadoe Haze
+"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Label2"]
+libraries = {
+&"": SubResource("AnimationLibrary_25rmk")
+}
+autoplay = "color_change"
+speed_scale = 2.0
+
+[node name="Version Label" type="Label" parent="."]
+z_index = 10
+layout_mode = 0
+offset_left = 364.0
+offset_top = -1.0
+offset_right = 476.0
+offset_bottom = 19.0
+theme_override_colors/font_color = Color(1, 0, 0.266667, 1)
+theme_override_colors/font_shadow_color = Color(0.0941176, 0.0784314, 0.145098, 1)
+theme_override_constants/shadow_outline_size = 8
+theme_override_fonts/font = ExtResource("2_oh24r")
+theme_override_font_sizes/font_size = 16
+text = "Version: 1.0"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Version Label"]
+libraries = {
+&"": SubResource("AnimationLibrary_25rmk")
+}
+autoplay = "color_change"
+speed_scale = 2.0
+
+[node name="Save System" parent="." instance=ExtResource("5_r43rs")]
+
+[node name="X Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 25.0
+offset_right = 47.0
+offset_bottom = 57.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ej33k")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_udpe3")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_cvp7a")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_k3ky0")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_m3tgj")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_mbjce")
+theme_override_styles/hover = SubResource("StyleBoxTexture_56o8o")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_es6cc")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_cd2fl")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_petde")
+theme_override_styles/normal = SubResource("StyleBoxTexture_2gt6a")
+action_mode = 0
+
+[node name="Itch Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 54.0
+offset_top = 25.0
+offset_right = 86.0
+offset_bottom = 57.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ej33k")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_udpe3")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_cvp7a")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_k3ky0")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_m3tgj")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_mbjce")
+theme_override_styles/hover = SubResource("StyleBoxTexture_2tgyq")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_es6cc")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_stglc")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_petde")
+theme_override_styles/normal = SubResource("StyleBoxTexture_2hj62")
+action_mode = 0
+
+[connection signal="pressed" from="Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="X Button" to="." method="_on_x_button_pressed"]
+[connection signal="pressed" from="Itch Button" to="." method="_on_itch_button_pressed"]

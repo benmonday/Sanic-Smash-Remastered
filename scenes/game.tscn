@@ -1,0 +1,242 @@
+[gd_scene load_steps=22 format=3 uid="uid://ddstt4tjfonau"]
+
+[ext_resource type="Script" uid="uid://tu7qqj8oo6nl" path="res://scripts/game_manager.gd" id="1_7026v"]
+[ext_resource type="Texture2D" uid="uid://pyhuegkdmu5j" path="res://assets/images/backgrounds/newBGnoDither.png" id="1_fitvm"]
+[ext_resource type="PackedScene" uid="uid://c8apkh8deymwt" path="res://scenes/hole.tscn" id="2_nn7rg"]
+[ext_resource type="Texture2D" uid="uid://bfvyt36yanqfs" path="res://assets/images/backgrounds/covers.png" id="2_stqp4"]
+[ext_resource type="Script" uid="uid://qi2lwbc8lqww" path="res://scripts/event_manager.gd" id="4_4qdem"]
+[ext_resource type="PackedScene" uid="uid://by38ntdp2oluu" path="res://scenes/event_objects/spawn_point.tscn" id="4_k60i3"]
+[ext_resource type="FontFile" uid="uid://be0637lpicl2n" path="res://assets/images/ui/Pixeltype.ttf" id="5_7aooa"]
+[ext_resource type="Texture2D" uid="uid://srl84mto3waq" path="res://assets/images/sprites/mult_bar.png" id="6_54ihc"]
+[ext_resource type="AudioStream" uid="uid://k5rbopsxkcwm" path="res://assets/audio/sfx/explosion.ogg" id="6_p3x54"]
+[ext_resource type="AudioStream" uid="uid://dtyhakryr3pqf" path="res://assets/audio/sfx/ohbaby.ogg" id="7_c72gp"]
+[ext_resource type="Texture2D" uid="uid://cw0kofl51gve5" path="res://assets/images/sprites/mult_bar_full.png" id="7_eo5fe"]
+[ext_resource type="Texture2D" uid="uid://dyprbxaaplfck" path="res://assets/images/sprites/heart.png" id="8_pocm7"]
+[ext_resource type="AudioStream" uid="uid://dlv6iajcosvmo" path="res://assets/audio/sfx/wombocombo.ogg" id="8_svfew"]
+[ext_resource type="PackedScene" uid="uid://chrtxrukwq34s" path="res://scenes/sniper.tscn" id="10_brg2u"]
+[ext_resource type="AudioStream" uid="uid://cs0o6ignv5vmy" path="res://assets/audio/music/smokeweedsong.ogg" id="10_caig0"]
+[ext_resource type="AudioStream" uid="uid://cfk2epu3cm7cw" path="res://assets/audio/sfx/sike_sfx.ogg" id="11_hwhj0"]
+[ext_resource type="PackedScene" uid="uid://dfxef3a3yeli3" path="res://scenes/save_system.tscn" id="15_03686"]
+[ext_resource type="Texture2D" uid="uid://dw317tamalcff" path="res://assets/images/sprites/blunt.png" id="16_jv5gl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_53fcs"]
+atlas = ExtResource("16_jv5gl")
+region = Rect2(0, 0, 32, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wi1vj"]
+atlas = ExtResource("16_jv5gl")
+region = Rect2(32, 0, 32, 49)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_s2o3q"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_53fcs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wi1vj")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[node name="Game" type="Node2D"]
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(240, 135)
+texture = ExtResource("1_fitvm")
+
+[node name="Covers" type="Sprite2D" parent="Background"]
+z_index = 4
+texture = ExtResource("2_stqp4")
+
+[node name="Holes" type="Node" parent="."]
+
+[node name="Hole" parent="Holes" instance=ExtResource("2_nn7rg")]
+position = Vector2(120, 135)
+
+[node name="Hole2" parent="Holes" instance=ExtResource("2_nn7rg")]
+position = Vector2(240, 135)
+
+[node name="Hole3" parent="Holes" instance=ExtResource("2_nn7rg")]
+position = Vector2(360, 135)
+
+[node name="Hole4" parent="Holes" instance=ExtResource("2_nn7rg")]
+position = Vector2(180, 80)
+
+[node name="Hole5" parent="Holes" instance=ExtResource("2_nn7rg")]
+position = Vector2(300, 80)
+
+[node name="Hole6" parent="Holes" instance=ExtResource("2_nn7rg")]
+position = Vector2(60, 80)
+
+[node name="Hole7" parent="Holes" instance=ExtResource("2_nn7rg")]
+position = Vector2(420, 80)
+
+[node name="Hole8" parent="Holes" instance=ExtResource("2_nn7rg")]
+position = Vector2(60, 190)
+
+[node name="Hole9" parent="Holes" instance=ExtResource("2_nn7rg")]
+position = Vector2(180, 190)
+
+[node name="Hole10" parent="Holes" instance=ExtResource("2_nn7rg")]
+position = Vector2(300, 190)
+
+[node name="Object Spawn Points" type="Node" parent="."]
+
+[node name="Spawn Point" parent="Object Spawn Points" instance=ExtResource("4_k60i3")]
+position = Vector2(120, 80)
+
+[node name="Spawn Point2" parent="Object Spawn Points" instance=ExtResource("4_k60i3")]
+position = Vector2(240, 80)
+
+[node name="Spawn Point3" parent="Object Spawn Points" instance=ExtResource("4_k60i3")]
+position = Vector2(360, 80)
+
+[node name="Spawn Point4" parent="Object Spawn Points" instance=ExtResource("4_k60i3")]
+position = Vector2(57, 145)
+
+[node name="Spawn Point5" parent="Object Spawn Points" instance=ExtResource("4_k60i3")]
+position = Vector2(180, 145)
+
+[node name="Spawn Point6" parent="Object Spawn Points" instance=ExtResource("4_k60i3")]
+position = Vector2(300, 145)
+
+[node name="Spawn Point7" parent="Object Spawn Points" instance=ExtResource("4_k60i3")]
+position = Vector2(420, 145)
+
+[node name="Spawn Point8" parent="Object Spawn Points" instance=ExtResource("4_k60i3")]
+position = Vector2(120, 210)
+
+[node name="Spawn Point9" parent="Object Spawn Points" instance=ExtResource("4_k60i3")]
+position = Vector2(240, 210)
+
+[node name="Game Manager" type="Node" parent="."]
+script = ExtResource("1_7026v")
+
+[node name="Add Sanic Timer" type="Timer" parent="Game Manager"]
+wait_time = 15.0
+
+[node name="Event Manager" type="Node" parent="."]
+script = ExtResource("4_4qdem")
+
+[node name="BombSFX" type="AudioStreamPlayer2D" parent="Event Manager"]
+position = Vector2(239, 115)
+stream = ExtResource("6_p3x54")
+volume_db = -10.0
+bus = &"SFX"
+
+[node name="TripleSFX" type="AudioStreamPlayer2D" parent="Event Manager"]
+position = Vector2(239, 115)
+stream = ExtResource("7_c72gp")
+volume_db = -10.0
+bus = &"SFX"
+
+[node name="WomboSFX" type="AudioStreamPlayer2D" parent="Event Manager"]
+position = Vector2(239, 115)
+stream = ExtResource("8_svfew")
+volume_db = -15.0
+bus = &"SFX"
+
+[node name="Smoke Weed Song" type="AudioStreamPlayer2D" parent="Event Manager"]
+stream = ExtResource("10_caig0")
+volume_db = -10.0
+bus = &"Music"
+
+[node name="Sanic Escaped SFX" type="AudioStreamPlayer2D" parent="Event Manager"]
+stream = ExtResource("11_hwhj0")
+bus = &"SFX"
+
+[node name="HUD" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 480.0
+offset_bottom = 43.0
+
+[node name="Score Label" type="Label" parent="HUD"]
+layout_mode = 2
+offset_left = 346.0
+offset_top = 17.0
+offset_right = 454.0
+offset_bottom = 37.0
+theme_override_colors/font_shadow_color = Color(0.0941176, 0.0784314, 0.145098, 1)
+theme_override_constants/shadow_outline_size = 4
+theme_override_fonts/font = ExtResource("5_7aooa")
+theme_override_font_sizes/font_size = 32
+text = "000000000"
+
+[node name="Multiplier Label" type="Label" parent="HUD"]
+layout_mode = 2
+offset_left = 190.0
+offset_top = 2.0
+offset_right = 291.0
+offset_bottom = 32.0
+theme_override_colors/font_shadow_color = Color(0.0941176, 0.0784314, 0.145098, 1)
+theme_override_constants/shadow_outline_size = 4
+theme_override_fonts/font = ExtResource("5_7aooa")
+theme_override_font_sizes/font_size = 48
+text = "1x"
+horizontal_alignment = 1
+
+[node name="Multiplier Bar" type="TextureProgressBar" parent="HUD"]
+layout_mode = 0
+offset_left = 190.0
+offset_top = 28.0
+offset_right = 291.0
+offset_bottom = 44.0
+max_value = 10.0
+texture_under = ExtResource("6_54ihc")
+texture_progress = ExtResource("7_eo5fe")
+
+[node name="Lives" type="HBoxContainer" parent="HUD"]
+layout_mode = 0
+offset_left = 35.0
+offset_top = 8.0
+offset_right = 139.0
+offset_bottom = 40.0
+
+[node name="Life1" type="TextureRect" parent="HUD/Lives"]
+layout_mode = 2
+texture = ExtResource("8_pocm7")
+stretch_mode = 2
+
+[node name="Life2" type="TextureRect" parent="HUD/Lives"]
+layout_mode = 2
+texture = ExtResource("8_pocm7")
+stretch_mode = 2
+
+[node name="Life3" type="TextureRect" parent="HUD/Lives"]
+layout_mode = 2
+texture = ExtResource("8_pocm7")
+stretch_mode = 2
+
+[node name="Blunt" type="AnimatedSprite2D" parent="."]
+visible = false
+z_index = 5
+position = Vector2(238, 221)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_s2o3q")
+autoplay = "default"
+frame_progress = 0.909052
+
+[node name="Sniper" parent="." instance=ExtResource("10_brg2u")]
+
+[node name="Save System" parent="." instance=ExtResource("15_03686")]
+
+[node name="Green Filter" type="ColorRect" parent="."]
+visible = false
+z_index = 10
+offset_right = 480.0
+offset_bottom = 270.0
+mouse_filter = 2
+color = Color(0, 0.4, 0, 0.222)
+
+[connection signal="bombShot" from="Game Manager" to="Event Manager" method="_on_game_manager_bomb_shot"]
+[connection signal="gameOver" from="Game Manager" to="Event Manager" method="_on_game_manager_game_over"]
+[connection signal="missedShot" from="Game Manager" to="Event Manager" method="_on_game_manager_missed_shot"]
+[connection signal="multIncreased" from="Game Manager" to="Event Manager" method="_on_game_manager_mult_increased"]
+[connection signal="sanicEscaped" from="Game Manager" to="Event Manager" method="_on_game_manager_sanic_escaped"]
+[connection signal="sanicShot" from="Game Manager" to="Event Manager" method="_on_game_manager_sanic_shot"]
+[connection signal="timeout" from="Game Manager/Add Sanic Timer" to="Game Manager" method="_on_add_sanic_timer_timeout"]
+[connection signal="finished" from="Event Manager/Smoke Weed Song" to="Event Manager" method="_on_smoke_weed_song_finished"]

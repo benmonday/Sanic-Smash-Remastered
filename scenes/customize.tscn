@@ -1,0 +1,417 @@
+[gd_scene load_steps=18 format=3 uid="uid://beqqcrhkcrn71"]
+
+[ext_resource type="Script" uid="uid://d25vbunneunj4" path="res://scripts/customize.gd" id="1_g186k"]
+[ext_resource type="Texture2D" uid="uid://cat7s05ougi7b" path="res://assets/images/backgrounds/sky_gradient.png" id="1_m4whn"]
+[ext_resource type="PackedScene" uid="uid://dfxef3a3yeli3" path="res://scenes/save_system.tscn" id="2_s0gsm"]
+[ext_resource type="FontFile" uid="uid://be0637lpicl2n" path="res://assets/images/ui/Pixeltype.ttf" id="3_xvinv"]
+[ext_resource type="PackedScene" uid="uid://chrtxrukwq34s" path="res://scenes/sniper.tscn" id="4_5majl"]
+[ext_resource type="Texture2D" uid="uid://dp4i3uqq4iy8b" path="res://assets/images/sprites/camo_base_icon.png" id="5_c3c8y"]
+[ext_resource type="Texture2D" uid="uid://cvsen1sfo0uqp" path="res://assets/images/sprites/camo_pink_icon.png" id="6_7ma54"]
+[ext_resource type="Texture2D" uid="uid://c26fdy8e84s6g" path="res://assets/images/sprites/camo_blossom_icon.png" id="7_2rljb"]
+[ext_resource type="Texture2D" uid="uid://hs5xpm4pxi3b" path="res://assets/images/sprites/camo_redtiger_icon.png" id="8_313t7"]
+[ext_resource type="Texture2D" uid="uid://82ebyprxm4cp" path="res://assets/images/sprites/camo_gold_icon.png" id="9_hvtis"]
+[ext_resource type="Texture2D" uid="uid://op1mlbbmmc41" path="res://assets/images/sprites/lock.png" id="10_wt1qg"]
+[ext_resource type="AudioStream" uid="uid://bx67j2u68kwh" path="res://assets/audio/sfx/nope.ogg" id="11_0526l"]
+[ext_resource type="AudioStream" uid="uid://j7ibdqcpum7b" path="res://assets/audio/sfx/shoot.ogg" id="13_vymeq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i1wjk"]
+bg_color = Color(0.635294, 0.14902, 0.2, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7yd58"]
+bg_color = Color(0.635294, 0.14902, 0.2, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0siu4"]
+bg_color = Color(1, 0, 0.266667, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_320v7"]
+size = Vector2(64, 64)
+
+[node name="Customize" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_g186k")
+
+[node name="Save System" parent="." instance=ExtResource("2_s0gsm")]
+
+[node name="BG" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_m4whn")
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 7.0
+offset_right = 480.0
+offset_bottom = 47.0
+theme_override_colors/font_shadow_color = Color(0.0941176, 0.0784314, 0.145098, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_constants/shadow_outline_size = 4
+theme_override_fonts/font = ExtResource("3_xvinv")
+theme_override_font_sizes/font_size = 64
+text = "Shoot a Camo to Equip "
+horizontal_alignment = 1
+
+[node name="Camo Select Border" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 62.0
+offset_right = 87.0
+offset_bottom = 132.0
+color = Color(0.0941176, 0.0784314, 0.145098, 1)
+
+[node name="Camo Select" type="ColorRect" parent="Camo Select Border"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 69.0
+offset_bottom = 69.0
+color = Color(0.243137, 0.537255, 0.282353, 1)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 233.0
+offset_right = 148.0
+offset_bottom = 266.0
+color = Color(0.0941176, 0.0784314, 0.145098, 1)
+
+[node name="Back" type="Button" parent="."]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 234.0
+offset_right = 147.0
+offset_bottom = 265.0
+theme_override_styles/focus = SubResource("StyleBoxFlat_i1wjk")
+theme_override_styles/hover = SubResource("StyleBoxFlat_7yd58")
+theme_override_styles/normal = SubResource("StyleBoxFlat_0siu4")
+action_mode = 0
+
+[node name="Label" type="Label" parent="Back"]
+layout_mode = 0
+offset_top = 8.0
+offset_right = 142.0
+offset_bottom = 28.0
+theme_override_colors/font_color = Color(0.0941176, 0.0784314, 0.145098, 1)
+theme_override_fonts/font = ExtResource("3_xvinv")
+theme_override_font_sizes/font_size = 32
+text = "BACK"
+horizontal_alignment = 1
+
+[node name="Camo Titles" type="Node" parent="."]
+
+[node name="Base Title" type="Label" parent="Camo Titles"]
+offset_left = 16.0
+offset_top = 50.0
+offset_right = 88.0
+offset_bottom = 73.0
+theme_override_colors/font_shadow_color = Color(0.0941176, 0.0784314, 0.145098, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_constants/shadow_outline_size = 4
+theme_override_fonts/font = ExtResource("3_xvinv")
+theme_override_font_sizes/font_size = 16
+text = "Base"
+horizontal_alignment = 1
+
+[node name="Pink Title" type="Label" parent="Camo Titles"]
+offset_left = 100.0
+offset_top = 50.0
+offset_right = 192.0
+offset_bottom = 73.0
+theme_override_colors/font_shadow_color = Color(0.0941176, 0.0784314, 0.145098, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_constants/shadow_outline_size = 4
+theme_override_fonts/font = ExtResource("3_xvinv")
+theme_override_font_sizes/font_size = 16
+text = "Pink
+"
+horizontal_alignment = 1
+
+[node name="Blossom Title" type="Label" parent="Camo Titles"]
+offset_left = 196.0
+offset_top = 50.0
+offset_right = 288.0
+offset_bottom = 73.0
+theme_override_colors/font_shadow_color = Color(0.0941176, 0.0784314, 0.145098, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_constants/shadow_outline_size = 4
+theme_override_fonts/font = ExtResource("3_xvinv")
+theme_override_font_sizes/font_size = 16
+text = "Cherry Blossom
+"
+horizontal_alignment = 1
+
+[node name="Red Tiger Title" type="Label" parent="Camo Titles"]
+offset_left = 289.0
+offset_top = 50.0
+offset_right = 381.0
+offset_bottom = 73.0
+theme_override_colors/font_shadow_color = Color(0.0941176, 0.0784314, 0.145098, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_constants/shadow_outline_size = 4
+theme_override_fonts/font = ExtResource("3_xvinv")
+theme_override_font_sizes/font_size = 16
+text = "Red Tiger
+
+"
+horizontal_alignment = 1
+
+[node name="Gold Title" type="Label" parent="Camo Titles"]
+offset_left = 382.0
+offset_top = 50.0
+offset_right = 474.0
+offset_bottom = 73.0
+theme_override_colors/font_shadow_color = Color(0.0941176, 0.0784314, 0.145098, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_constants/shadow_outline_size = 4
+theme_override_fonts/font = ExtResource("3_xvinv")
+theme_override_font_sizes/font_size = 16
+text = "Gold
+
+"
+horizontal_alignment = 1
+
+[node name="Camo Icons" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 65.0
+offset_right = 460.0
+offset_bottom = 129.0
+theme_override_constants/separation = 30
+
+[node name="Base Icon" type="TextureRect" parent="Camo Icons"]
+layout_mode = 2
+texture = ExtResource("5_c3c8y")
+
+[node name="Base Area" type="Area2D" parent="Camo Icons/Base Icon"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Camo Icons/Base Icon/Base Area"]
+position = Vector2(32, 32)
+shape = SubResource("RectangleShape2D_320v7")
+
+[node name="Pink Icon" type="TextureRect" parent="Camo Icons"]
+layout_mode = 2
+texture = ExtResource("6_7ma54")
+
+[node name="Pink Area" type="Area2D" parent="Camo Icons/Pink Icon"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Camo Icons/Pink Icon/Pink Area"]
+position = Vector2(32, 32)
+shape = SubResource("RectangleShape2D_320v7")
+
+[node name="Blossom Icon" type="TextureRect" parent="Camo Icons"]
+layout_mode = 2
+texture = ExtResource("7_2rljb")
+
+[node name="Blossom Area" type="Area2D" parent="Camo Icons/Blossom Icon"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Camo Icons/Blossom Icon/Blossom Area"]
+position = Vector2(32, 32)
+shape = SubResource("RectangleShape2D_320v7")
+
+[node name="Red Tiger Icon" type="TextureRect" parent="Camo Icons"]
+layout_mode = 2
+texture = ExtResource("8_313t7")
+
+[node name="Red Tiger Area" type="Area2D" parent="Camo Icons/Red Tiger Icon"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Camo Icons/Red Tiger Icon/Red Tiger Area"]
+position = Vector2(32, 32)
+shape = SubResource("RectangleShape2D_320v7")
+
+[node name="Gold Icon" type="TextureRect" parent="Camo Icons"]
+layout_mode = 2
+texture = ExtResource("9_hvtis")
+
+[node name="Gold Area" type="Area2D" parent="Camo Icons/Gold Icon"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Camo Icons/Gold Icon/Gold Area"]
+position = Vector2(32, 32)
+shape = SubResource("RectangleShape2D_320v7")
+
+[node name="Locks" type="Node" parent="."]
+
+[node name="Pink Lock" type="TextureRect" parent="Locks"]
+visible = false
+offset_left = 114.0
+offset_top = 65.0
+offset_right = 178.0
+offset_bottom = 129.0
+texture = ExtResource("10_wt1qg")
+
+[node name="Blossom Lock" type="TextureRect" parent="Locks"]
+visible = false
+offset_left = 208.0
+offset_top = 65.0
+offset_right = 272.0
+offset_bottom = 129.0
+texture = ExtResource("10_wt1qg")
+
+[node name="Red Tiger Lock" type="TextureRect" parent="Locks"]
+visible = false
+offset_left = 302.0
+offset_top = 65.0
+offset_right = 366.0
+offset_bottom = 129.0
+texture = ExtResource("10_wt1qg")
+
+[node name="Gold Lock" type="TextureRect" parent="Locks"]
+visible = false
+offset_left = 396.0
+offset_top = 65.0
+offset_right = 460.0
+offset_bottom = 129.0
+texture = ExtResource("10_wt1qg")
+
+[node name="Camo Descriptions" type="Node" parent="."]
+
+[node name="Base Desc" type="Label" parent="Camo Descriptions"]
+z_index = 10
+offset_left = 16.0
+offset_top = 138.0
+offset_right = 88.0
+offset_bottom = 161.0
+theme_override_colors/font_shadow_color = Color(0.0941176, 0.0784314, 0.145098, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_constants/shadow_outline_size = 4
+theme_override_fonts/font = ExtResource("3_xvinv")
+theme_override_font_sizes/font_size = 16
+text = "Unlocked by
+Default"
+horizontal_alignment = 1
+
+[node name="Pink Desc" type="Label" parent="Camo Descriptions"]
+z_index = 10
+offset_left = 102.0
+offset_top = 138.0
+offset_right = 194.0
+offset_bottom = 161.0
+theme_override_colors/font_shadow_color = Color(0.0941176, 0.0784314, 0.145098, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_constants/shadow_outline_size = 4
+theme_override_fonts/font = ExtResource("3_xvinv")
+theme_override_font_sizes/font_size = 16
+text = "Reach 10x 
+Multiplier 10 Times
+"
+horizontal_alignment = 1
+
+[node name="Blossom Desc" type="Label" parent="Camo Descriptions"]
+z_index = 10
+offset_left = 195.0
+offset_top = 138.0
+offset_right = 287.0
+offset_bottom = 161.0
+theme_override_colors/font_shadow_color = Color(0.0941176, 0.0784314, 0.145098, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_constants/shadow_outline_size = 4
+theme_override_fonts/font = ExtResource("3_xvinv")
+theme_override_font_sizes/font_size = 16
+text = "Smash 10,000
+Sanics
+"
+horizontal_alignment = 1
+
+[node name="Red Tiger Desc" type="Label" parent="Camo Descriptions"]
+z_index = 10
+offset_left = 290.0
+offset_top = 138.0
+offset_right = 382.0
+offset_bottom = 161.0
+theme_override_colors/font_shadow_color = Color(0.0941176, 0.0784314, 0.145098, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_constants/shadow_outline_size = 4
+theme_override_fonts/font = ExtResource("3_xvinv")
+theme_override_font_sizes/font_size = 16
+text = "Reach 50,000
+Score in One Game
+"
+horizontal_alignment = 1
+
+[node name="Gold Desc" type="Label" parent="Camo Descriptions"]
+z_index = 10
+offset_left = 383.0
+offset_top = 138.0
+offset_right = 475.0
+offset_bottom = 161.0
+theme_override_colors/font_shadow_color = Color(0.0941176, 0.0784314, 0.145098, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_constants/shadow_outline_size = 4
+theme_override_fonts/font = ExtResource("3_xvinv")
+theme_override_font_sizes/font_size = 16
+text = "Unlock All
+Other Camos
+"
+horizontal_alignment = 1
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_0526l")
+volume_db = -10.0
+
+[node name="Sniper" parent="." instance=ExtResource("4_5majl")]
+
+[node name="Stats" type="VBoxContainer" parent="."]
+z_index = 10
+layout_mode = 0
+offset_left = 154.0
+offset_top = 182.0
+offset_right = 326.0
+offset_bottom = 222.0
+
+[node name="Score Label" type="Label" parent="Stats"]
+z_index = 11
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0.0941176, 0.0784314, 0.145098, 1)
+theme_override_constants/shadow_outline_size = 4
+theme_override_fonts/font = ExtResource("3_xvinv")
+theme_override_font_sizes/font_size = 16
+text = "HIGH SCORE: 000000000"
+horizontal_alignment = 1
+
+[node name="Sanics Smashed Label" type="Label" parent="Stats"]
+z_index = 11
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0.0941176, 0.0784314, 0.145098, 1)
+theme_override_constants/shadow_outline_size = 4
+theme_override_fonts/font = ExtResource("3_xvinv")
+theme_override_font_sizes/font_size = 16
+text = "SANICS SMASHED: 000000000"
+horizontal_alignment = 1
+
+[node name="Max Mults Label" type="Label" parent="Stats"]
+z_index = 11
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0.0941176, 0.0784314, 0.145098, 1)
+theme_override_constants/shadow_outline_size = 4
+theme_override_fonts/font = ExtResource("3_xvinv")
+theme_override_font_sizes/font_size = 16
+text = "10x Multipliers Reached: 000000000"
+horizontal_alignment = 1
+
+[node name="AudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("13_vymeq")
+volume_db = -20.0
+
+[connection signal="pressed" from="Back" to="." method="_on_back_pressed"]
+[connection signal="input_event" from="Camo Icons/Base Icon/Base Area" to="." method="_on_base_area_input_event"]
+[connection signal="input_event" from="Camo Icons/Pink Icon/Pink Area" to="." method="_on_pink_area_input_event"]
+[connection signal="input_event" from="Camo Icons/Blossom Icon/Blossom Area" to="." method="_on_blossom_area_input_event"]
+[connection signal="input_event" from="Camo Icons/Red Tiger Icon/Red Tiger Area" to="." method="_on_red_tiger_area_input_event"]
+[connection signal="input_event" from="Camo Icons/Gold Icon/Gold Area" to="." method="_on_gold_area_input_event"]

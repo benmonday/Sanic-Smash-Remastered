@@ -1,0 +1,450 @@
+[gd_scene load_steps=50 format=3 uid="uid://ykor6ujv6kib"]
+
+[ext_resource type="Texture2D" uid="uid://cat7s05ougi7b" path="res://assets/images/backgrounds/sky_gradient.png" id="1_meh53"]
+[ext_resource type="Script" uid="uid://dfgla82hawrcu" path="res://scripts/main_menu.gd" id="1_w70bn"]
+[ext_resource type="FontFile" uid="uid://be0637lpicl2n" path="res://assets/images/ui/Pixeltype.ttf" id="2_1enfq"]
+[ext_resource type="PackedScene" uid="uid://chrtxrukwq34s" path="res://scenes/sniper.tscn" id="3_10gka"]
+[ext_resource type="Texture2D" uid="uid://b1tmw5vfi5dlg" path="res://assets/images/sprites/sanic.png" id="5_uiu71"]
+[ext_resource type="PackedScene" uid="uid://dfxef3a3yeli3" path="res://scenes/save_system.tscn" id="6_cr5m7"]
+[ext_resource type="Texture2D" uid="uid://by4eoenw8gti" path="res://assets/images/sprites/credits.png" id="7_2xny4"]
+[ext_resource type="Texture2D" uid="uid://bi7sv4jhe2a5a" path="res://assets/images/sprites/credits_hover.png" id="7_ffbcc"]
+
+[sub_resource type="Animation" id="Animation_trby1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:theme_override_colors/font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0, 0.266667, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_2hsdm"]
+resource_name = "color_change"
+length = 6.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:theme_override_colors/font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 4, 5, 6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 0, 0.266667, 1), Color(0.968627, 0.462745, 0.133333, 1), Color(0.996078, 0.905882, 0.380392, 1), Color(0.388235, 0.780392, 0.301961, 1), Color(0, 0.6, 0.858824, 1), Color(0.407843, 0.219608, 0.423529, 1), Color(1, 0, 0.266667, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_25rmk"]
+_data = {
+&"RESET": SubResource("Animation_trby1"),
+&"color_change": SubResource("Animation_2hsdm")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o7nrb"]
+bg_color = Color(0.243137, 0.537255, 0.282353, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ro08l"]
+bg_color = Color(0.243137, 0.537255, 0.282353, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_na7k6"]
+bg_color = Color(0.388235, 0.780392, 0.301961, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qhaos"]
+bg_color = Color(0.968627, 0.462745, 0.133333, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2lv1o"]
+bg_color = Color(0.968627, 0.462745, 0.133333, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dh3rk"]
+bg_color = Color(0.996078, 0.682353, 0.203922, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q0in2"]
+bg_color = Color(0.407843, 0.219608, 0.423529, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8wdyd"]
+bg_color = Color(0.407843, 0.219608, 0.423529, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vrgsg"]
+bg_color = Color(0.709804, 0.313726, 0.533333, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b0o1g"]
+bg_color = Color(0.635294, 0.14902, 0.2, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hx2ts"]
+bg_color = Color(0.635294, 0.14902, 0.2, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v16q4"]
+bg_color = Color(1, 0, 0.266667, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8eypj"]
+atlas = ExtResource("5_uiu71")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v6x8x"]
+atlas = ExtResource("5_uiu71")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vf6tj"]
+atlas = ExtResource("5_uiu71")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cbl0s"]
+atlas = ExtResource("5_uiu71")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6jmhe"]
+atlas = ExtResource("5_uiu71")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nsfhr"]
+atlas = ExtResource("5_uiu71")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jt7hq"]
+atlas = ExtResource("5_uiu71")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tn764"]
+atlas = ExtResource("5_uiu71")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pusca"]
+atlas = ExtResource("5_uiu71")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h6goe"]
+atlas = ExtResource("5_uiu71")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cex14"]
+atlas = ExtResource("5_uiu71")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0rtma"]
+atlas = ExtResource("5_uiu71")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mixs8"]
+atlas = ExtResource("5_uiu71")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_afwec"]
+atlas = ExtResource("5_uiu71")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_18ywh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8eypj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v6x8x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vf6tj")
+}],
+"loop": false,
+"name": &"blink",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cbl0s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6jmhe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nsfhr")
+}],
+"loop": false,
+"name": &"eye_dart",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jt7hq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tn764")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pusca")
+}],
+"loop": false,
+"name": &"gold_blink",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h6goe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cex14")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0rtma")
+}],
+"loop": false,
+"name": &"gold_eye_dart",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mixs8")
+}],
+"loop": false,
+"name": &"gold_idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_afwec")
+}],
+"loop": false,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_c4yqc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_q6a3g"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nbsrx"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3v3ha"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dhrjg"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_57iu4"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gcikl"]
+texture = ExtResource("7_ffbcc")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gpifi"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_a7rpn"]
+texture = ExtResource("7_ffbcc")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_13q8n"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1xopm"]
+texture = ExtResource("7_2xny4")
+
+[node name="Main Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_w70bn")
+
+[node name="Sky" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 480.0
+offset_bottom = 270.0
+pivot_offset = Vector2(578, 170)
+texture = ExtResource("1_meh53")
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 17.0
+offset_right = 483.0
+offset_bottom = 97.0
+theme_override_colors/font_shadow_color = Color(0.0941176, 0.0784314, 0.145098, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_constants/shadow_outline_size = 4
+theme_override_fonts/font = ExtResource("2_1enfq")
+theme_override_font_sizes/font_size = 128
+text = "Sanic Smash"
+horizontal_alignment = 1
+
+[node name="Title2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 86.0
+offset_right = 481.0
+offset_bottom = 126.0
+theme_override_colors/font_color = Color(1, 0, 0.266667, 1)
+theme_override_colors/font_shadow_color = Color(0.0941176, 0.0784314, 0.145098, 1)
+theme_override_constants/outline_size = 4
+theme_override_constants/shadow_outline_size = 4
+theme_override_fonts/font = ExtResource("2_1enfq")
+theme_override_font_sizes/font_size = 64
+text = "REMASTERED"
+horizontal_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Title2"]
+libraries = {
+&"": SubResource("AnimationLibrary_25rmk")
+}
+autoplay = "color_change"
+speed_scale = 2.0
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 168.0
+offset_top = 131.0
+offset_right = 312.0
+offset_bottom = 164.0
+color = Color(0.0941176, 0.0784314, 0.145098, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 168.0
+offset_top = 165.0
+offset_right = 312.0
+offset_bottom = 198.0
+color = Color(0.0941176, 0.0784314, 0.145098, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 168.0
+offset_top = 199.0
+offset_right = 312.0
+offset_bottom = 232.0
+color = Color(0.0941176, 0.0784314, 0.145098, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 168.0
+offset_top = 233.0
+offset_right = 312.0
+offset_bottom = 266.0
+color = Color(0.0941176, 0.0784314, 0.145098, 1)
+
+[node name="Play" type="Button" parent="."]
+layout_mode = 2
+offset_left = 169.0
+offset_top = 132.0
+offset_right = 311.0
+offset_bottom = 163.0
+theme_override_styles/focus = SubResource("StyleBoxFlat_o7nrb")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ro08l")
+theme_override_styles/normal = SubResource("StyleBoxFlat_na7k6")
+action_mode = 0
+
+[node name="Label" type="Label" parent="Play"]
+layout_mode = 0
+offset_top = 8.0
+offset_right = 142.0
+offset_bottom = 28.0
+theme_override_colors/font_color = Color(0.0941176, 0.0784314, 0.145098, 1)
+theme_override_fonts/font = ExtResource("2_1enfq")
+theme_override_font_sizes/font_size = 32
+text = "PLAY"
+horizontal_alignment = 1
+
+[node name="Tutorial" type="Button" parent="."]
+layout_mode = 2
+offset_left = 169.0
+offset_top = 166.0
+offset_right = 311.0
+offset_bottom = 197.0
+theme_override_styles/focus = SubResource("StyleBoxFlat_qhaos")
+theme_override_styles/hover = SubResource("StyleBoxFlat_2lv1o")
+theme_override_styles/normal = SubResource("StyleBoxFlat_dh3rk")
+action_mode = 0
+
+[node name="Label" type="Label" parent="Tutorial"]
+layout_mode = 0
+offset_top = 8.0
+offset_right = 142.0
+offset_bottom = 28.0
+theme_override_colors/font_color = Color(0.0941176, 0.0784314, 0.145098, 1)
+theme_override_fonts/font = ExtResource("2_1enfq")
+theme_override_font_sizes/font_size = 32
+text = "HOW TO PLAY"
+horizontal_alignment = 1
+
+[node name="Customize" type="Button" parent="."]
+layout_mode = 2
+offset_left = 169.0
+offset_top = 200.0
+offset_right = 311.0
+offset_bottom = 231.0
+theme_override_styles/focus = SubResource("StyleBoxFlat_q0in2")
+theme_override_styles/hover = SubResource("StyleBoxFlat_8wdyd")
+theme_override_styles/normal = SubResource("StyleBoxFlat_vrgsg")
+action_mode = 0
+
+[node name="Label" type="Label" parent="Customize"]
+layout_mode = 0
+offset_top = 8.0
+offset_right = 142.0
+offset_bottom = 28.0
+theme_override_colors/font_color = Color(0.0941176, 0.0784314, 0.145098, 1)
+theme_override_fonts/font = ExtResource("2_1enfq")
+theme_override_font_sizes/font_size = 32
+text = "BARRACKS"
+horizontal_alignment = 1
+
+[node name="Quit" type="Button" parent="."]
+layout_mode = 2
+offset_left = 169.0
+offset_top = 234.0
+offset_right = 311.0
+offset_bottom = 265.0
+theme_override_styles/focus = SubResource("StyleBoxFlat_b0o1g")
+theme_override_styles/hover = SubResource("StyleBoxFlat_hx2ts")
+theme_override_styles/normal = SubResource("StyleBoxFlat_v16q4")
+action_mode = 0
+
+[node name="Label" type="Label" parent="Quit"]
+layout_mode = 0
+offset_top = 8.0
+offset_right = 142.0
+offset_bottom = 28.0
+theme_override_colors/font_color = Color(0.0941176, 0.0784314, 0.145098, 1)
+theme_override_fonts/font = ExtResource("2_1enfq")
+theme_override_font_sizes/font_size = 32
+text = "QUIT"
+horizontal_alignment = 1
+
+[node name="Sniper" parent="." instance=ExtResource("3_10gka")]
+
+[node name="Sanic" type="AnimatedSprite2D" parent="."]
+position = Vector2(150, 200)
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_18ywh")
+animation = &"gold_idle"
+autoplay = "idle"
+offset = Vector2(-14, -1.99999)
+
+[node name="Save System" parent="." instance=ExtResource("6_cr5m7")]
+
+[node name="Info" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 237.0
+offset_right = 33.0
+offset_bottom = 269.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_c4yqc")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_q6a3g")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_nbsrx")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_3v3ha")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_dhrjg")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_57iu4")
+theme_override_styles/hover = SubResource("StyleBoxTexture_gcikl")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_gpifi")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_a7rpn")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_13q8n")
+theme_override_styles/normal = SubResource("StyleBoxTexture_1xopm")
+action_mode = 0
+
+[connection signal="pressed" from="Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Tutorial" to="." method="_on_tutorial_pressed"]
+[connection signal="pressed" from="Customize" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="Info" to="." method="_on_info_pressed"]

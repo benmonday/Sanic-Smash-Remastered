@@ -1,0 +1,51 @@
+[gd_scene load_steps=2 format=3 uid="uid://dfxef3a3yeli3"]
+
+[sub_resource type="GDScript" id="GDScript_yhas8"]
+script/source = "extends Node
+
+var savePath = \"user://SanicSmashSaveData.save\"
+
+var highScore: int = 0
+var sanicsSmashed: int = 0
+var maxMultsReached: int = 0
+var gunCamo: int = 0
+var lastScore: int = 0
+var secretMenu: bool = false
+
+func save():
+	var file = FileAccess.open(savePath, FileAccess.WRITE)
+	file.store_var(highScore)
+	file.store_var(sanicsSmashed)
+	file.store_var(maxMultsReached)
+	file.store_var(gunCamo)
+	file.store_var(lastScore)
+	file.store_var(secretMenu)
+	file.close()
+	
+func load_save():
+	if FileAccess.file_exists(savePath):
+		var file = FileAccess.open(savePath, FileAccess.READ)
+		highScore = file.get_var(highScore)
+		sanicsSmashed = file.get_var(sanicsSmashed)
+		maxMultsReached = file.get_var(maxMultsReached)
+		gunCamo = file.get_var(gunCamo)
+		lastScore = file.get_var(lastScore)
+		secretMenu = file.get_var(secretMenu)
+		#print(\"Save Data Found!\\nHighscore: \" + str(highScore) + \"\\nSanics Smashed: \" + str(sanicsSmashed) + \"\\n 10x Mults Reached: \" + str(maxMultsReached) + \"\\nEquipped Camo: \" + str(gunCamo))
+		file.close()
+	else:
+		#print(\"No Save Data Found\")
+		highScore = 0
+		sanicsSmashed = 0
+		maxMultsReached = 0
+		gunCamo = 0
+		lastScore = 0
+		secretMenu = false
+		save()
+		
+func _ready() -> void:
+	load_save()
+"
+
+[node name="Save System" type="Node"]
+script = SubResource("GDScript_yhas8")

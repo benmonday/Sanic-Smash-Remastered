@@ -1,0 +1,176 @@
+[gd_scene load_steps=11 format=3 uid="uid://cjoegst7icv1n"]
+
+[ext_resource type="Script" uid="uid://b1n2g0u0i8r46" path="res://scripts/credits.gd" id="1_6wxsa"]
+[ext_resource type="Texture2D" uid="uid://cat7s05ougi7b" path="res://assets/images/backgrounds/sky_gradient.png" id="2_444bn"]
+[ext_resource type="FontFile" uid="uid://be0637lpicl2n" path="res://assets/images/ui/Pixeltype.ttf" id="3_yu357"]
+[ext_resource type="Texture2D" uid="uid://drrmx1g3miem3" path="res://assets/images/ui/tutorial.png" id="4_1q68q"]
+[ext_resource type="PackedScene" uid="uid://chrtxrukwq34s" path="res://scenes/sniper.tscn" id="4_qimlr"]
+[ext_resource type="Texture2D" uid="uid://ctajs67ulvivc" path="res://assets/images/ui/tutorial_bomb.png" id="5_jgnbg"]
+[ext_resource type="PackedScene" uid="uid://dfxef3a3yeli3" path="res://scenes/save_system.tscn" id="7_x7k00"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b8g7f"]
+bg_color = Color(0.635294, 0.14902, 0.2, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wp8rr"]
+bg_color = Color(0.635294, 0.14902, 0.2, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_joper"]
+bg_color = Color(1, 0, 0.266667, 1)
+
+[node name="Tutorial" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6wxsa")
+
+[node name="Sky" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 480.0
+offset_bottom = 270.0
+texture = ExtResource("2_444bn")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 233.0
+offset_right = 148.0
+offset_bottom = 266.0
+color = Color(0.0941176, 0.0784314, 0.145098, 1)
+
+[node name="Back" type="Button" parent="."]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 234.0
+offset_right = 147.0
+offset_bottom = 265.0
+theme_override_styles/focus = SubResource("StyleBoxFlat_b8g7f")
+theme_override_styles/hover = SubResource("StyleBoxFlat_wp8rr")
+theme_override_styles/normal = SubResource("StyleBoxFlat_joper")
+action_mode = 0
+
+[node name="Label" type="Label" parent="Back"]
+layout_mode = 0
+offset_top = 8.0
+offset_right = 142.0
+offset_bottom = 28.0
+theme_override_colors/font_color = Color(0.0941176, 0.0784314, 0.145098, 1)
+theme_override_fonts/font = ExtResource("3_yu357")
+theme_override_font_sizes/font_size = 32
+text = "BACK"
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 18.0
+offset_top = 106.0
+offset_right = 138.0
+offset_bottom = 220.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.0941176, 0.0784314, 0.145098, 1)
+theme_override_constants/shadow_outline_size = 8
+theme_override_fonts/font = ExtResource("3_yu357")
+theme_override_font_sizes/font_size = 16
+text = "Shoot the Sanics to 
+build up a multiplier
+and get score.
+
+Sanics will leave after
+4 seconds causing you
+to lose a life. Gold Sanics
+are faster but will not
+take a life if not shot."
+vertical_alignment = 1
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 12.0
+offset_right = 106.0
+offset_bottom = 98.0
+color = Color(0.0941176, 0.0784314, 0.145098, 1)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 14.0
+offset_right = 104.0
+offset_bottom = 96.0
+texture = ExtResource("4_1q68q")
+stretch_mode = 4
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 171.0
+offset_top = 106.0
+offset_right = 291.0
+offset_bottom = 220.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.0941176, 0.0784314, 0.145098, 1)
+theme_override_constants/shadow_outline_size = 8
+theme_override_fonts/font = ExtResource("3_yu357")
+theme_override_font_sizes/font_size = 16
+text = "Shooting a bomb will take
+a life from you. Bombs will
+disappear if left alone
+for 3 seconds.
+
+Missing a shot, shooting a
+bomb, or letting a Sanic 
+leave will reset your
+multiplier."
+vertical_alignment = 1
+
+[node name="ColorRect3" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 180.0
+offset_top = 12.0
+offset_right = 266.0
+offset_bottom = 98.0
+color = Color(0.0941176, 0.0784314, 0.145098, 1)
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 182.0
+offset_top = 14.0
+offset_right = 264.0
+offset_bottom = 96.0
+texture = ExtResource("5_jgnbg")
+stretch_mode = 4
+
+[node name="Score Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 346.0
+offset_top = 43.0
+offset_right = 454.0
+offset_bottom = 63.0
+theme_override_colors/font_shadow_color = Color(0.0941176, 0.0784314, 0.145098, 1)
+theme_override_constants/shadow_outline_size = 4
+theme_override_fonts/font = ExtResource("3_yu357")
+theme_override_font_sizes/font_size = 32
+text = "000050000"
+
+[node name="Label3" type="Label" parent="."]
+layout_mode = 0
+offset_left = 338.0
+offset_top = 47.0
+offset_right = 458.0
+offset_bottom = 161.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.0941176, 0.0784314, 0.145098, 1)
+theme_override_constants/shadow_outline_size = 8
+theme_override_fonts/font = ExtResource("3_yu357")
+theme_override_font_sizes/font_size = 16
+text = "The game is endless, but
+reaching 50,000 points
+will let you win the game
+after it ends."
+vertical_alignment = 1
+
+[node name="Sniper" parent="." instance=ExtResource("4_qimlr")]
+
+[node name="Save System" parent="." instance=ExtResource("7_x7k00")]
+
+[connection signal="pressed" from="Back" to="." method="_on_back_pressed"]

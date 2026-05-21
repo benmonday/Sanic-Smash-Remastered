@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://d0gfl8skr8g17"]
+
+[ext_resource type="AudioStream" uid="uid://biil1k3key6dw" path="res://assets/audio/music/myhopewillneverdie.ogg" id="1_yur7v"]
+
+[node name="Music" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_yur7v")
+autoplay = true
+bus = &"Music"
